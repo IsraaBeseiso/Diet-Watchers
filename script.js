@@ -51,10 +51,21 @@ $(document).ready(function () {
       .html("Search for Recipes containing " + foods)
       .on("click", function () {
         window.location.href = "recipes.html";
+
+        //constructing the searchQueryURL
+        var searchAPIId = "770e1cdd";
+        var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
+        var searchQueryURL =
+          "https://api.edamam.com/search?q=" +
+          foods +
+          "&app_id=" +
+          searchAPIId +
+          "&app_key=" +
+          searchAPIkey;
         var searchAPIId = "770e1cdd";
         var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
 
-        var searchQueryURL =
+        searchQueryURL =
           "https://api.edamam.com/search?q=" +
           foods +
           "&app_id=" +
@@ -67,23 +78,27 @@ $(document).ready(function () {
           method: "get",
         }).then(function (response) {
           console.log(response);
-          //var rectitle = response.
+
           var recimg = response.hits[1].recipe.image;
 
           console.log(recimg);
+
+          console.log(searchQueryURL);
+        });
+
+        //calling the search
+        $.ajax({
+          url: searchQueryURL,
+          method: "get",
+        }).then(function (response) {
           console.log(response);
+
+          var recimg = response.hits[1].recipe.image;
+          console.log(recimg);
+
           $("recipes.html#card-1");
           $(this).find("img").attr("src", recimg);
         });
-
-        //   for (i = 0; i < 8; i++) {
-
-        //   console.log(recimg);
-        //   $("#card-1");
-        //   $("img").attr("src", "reponse.hits[i].recipe.image");
-        //   }
       });
   });
 });
-
-//
