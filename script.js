@@ -82,14 +82,22 @@ $(document).ready(function () {
                 $('#food-results').append(`<p>${foodItem.food.label}</p>`);
                 $('#food-results').append('<h4>Category</h4>');
                 $('#food-results').append(`<p>${foodItem.food.category}</p>`);
-                if (foodItem.food.image == null) {
-
-                }
-                else {
+                if (foodItem.food.image != null) {
                     $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
                 }
 
-            })
+                console.log(foodItem.food.nutrients);
+                $('#food-results').append('<h4>Carbs</h4>');
+                $('#food-results').append(`<p>${foodItem.food.nutrients.CHOCDF}</p>`);
+                $('#food-results').append('<h4>Energy</h4>');
+                $('#food-results').append(`<p>${foodItem.food.nutrients.ENERC_KCAL}</p>`);
+                $('#food-results').append('<h4>Fat</h4>');
+                $('#food-results').append(`<p>${foodItem.food.nutrients.FAT}</p>`);
+                $('#food-results').append('<h4>Fiber</h4>');
+                $('#food-results').append(`<p>${foodItem.food.nutrients.FIBTG}</p>`);
+                $('#food-results').append('<h4>Protein</h4>');
+                $('#food-results').append(`<p>${foodItem.food.nutrients.PROCNT}</p>`);
+            });
 
 
         });
