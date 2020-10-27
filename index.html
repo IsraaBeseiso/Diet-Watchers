@@ -37,10 +37,12 @@
     <h1 style="text-align: center"> Diet Watchers</h1>
     <h2 style>Enter Your Recipe</h2>
     <div class="row-padding"></div>
-    <textarea class="form-control" style="width:80%" type="text" rows="30"></textarea>
-    <button type="button" class="btn btn-info" myFunction()">click here to submit your recipe</button>
+    <form id="recipe-form">
+      <textarea class="form-control" id="food-input" style="width:80%" type="text" rows="30"></textarea>
+      <button type="submit" class="btn btn-info">click here to submit your recipe</button>
+    </form>
   </div>
-  <div class="container">
+  <div class="container" id='food-results'>
     <div class="row">
       <div class="col-md">
       </div>
