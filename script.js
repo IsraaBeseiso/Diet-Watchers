@@ -52,49 +52,44 @@ $(document).ready(function () {
       .on("click", function () {
         window.location.href = "recipes.html";
 
-        //constructing the searchQueryURL
-        var searchAPIId = "770e1cdd";
-        var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
-        var searchQueryURL =
-          "https://api.edamam.com/search?q=" +
-          foods +
-          "&app_id=" +
-          searchAPIId +
-          "&app_key=" +
-          searchAPIkey;
-        var searchAPIId = "770e1cdd";
-        var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
+        $(document).ready(function () {
+          console.log("2nd page ready");
+          //constructing the searchQueryURL
+          var searchAPIId = "770e1cdd";
+          var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
+          var searchQueryURL =
+            "https://api.edamam.com/search?q=" +
+            foods +
+            "&app_id=" +
+            searchAPIId +
+            "&app_key=" +
+            searchAPIkey;
+          var searchAPIId = "770e1cdd";
+          var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
 
-        searchQueryURL =
-          "https://api.edamam.com/search?q=" +
-          foods +
-          "&app_id=" +
-          searchAPIId +
-          "&app_key=" +
-          searchAPIkey;
-        console.log(searchQueryURL);
-        $.ajax({
-          url: searchQueryURL,
-          method: "get",
-        }).then(function (response) {
-          console.log(response);
-
-          var recimg = response.hits[1].recipe.image;
-
-          console.log(recimg);
-
+          searchQueryURL =
+            "https://api.edamam.com/search?q=" +
+            foods +
+            "&app_id=" +
+            searchAPIId +
+            "&app_key=" +
+            searchAPIkey;
           console.log(searchQueryURL);
-        });
 
-        //calling the search
-        $.ajax({
-          url: searchQueryURL,
-          method: "get",
-        }).then(function (response) {
-          console.log(response);
+          //calling the search query
 
-          var recimg = response.hits[1].recipe.image;
-          console.log(recimg);
+          $.ajax({
+            url: searchQueryURL,
+            method: "get",
+          }).then(function (response) {
+            console.log(response);
+
+            var recimg = response.hits[1].recipe.image;
+
+            console.log(recimg);
+
+            console.log(searchQueryURL);
+          });
 
           $("recipes.html#card-1");
           $(this).find("img").attr("src", recimg);
