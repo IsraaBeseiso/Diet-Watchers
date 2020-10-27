@@ -40,60 +40,92 @@ $(document).ready(function () {
   $("#recipe-form").submit(function (event) {
     event.preventDefault();
     var foods = $("#food-input").val();
-
+    //localStorage.setItem();
     getFoodData(foods);
 
-    //edamame search api call
+    //edamam search api call
 
-    //create search button
+    //constructing the searchQueryURL
+    var searchAPIId = "770e1cdd";
+    var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
+    var searchQueryURL =
+      "https://api.edamam.com/search?q=" +
+      foods +
+      "&app_id=" +
+      searchAPIId +
+      "&app_key=" +
+      searchAPIkey;
+    var searchAPIId = "770e1cdd";
+    var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
 
-    $("#searchBtn")
-      .html("Search for Recipes containing " + foods)
-      .on("click", function () {
-        window.location.href = "recipes.html";
+    searchQueryURL =
+      "https://api.edamam.com/search?q=" +
+      foods +
+      "&app_id=" +
+      searchAPIId +
+      "&app_key=" +
+      searchAPIkey;
+    console.log(searchQueryURL);
 
-        $(document).ready(function () {
-          console.log("2nd page ready");
-          //constructing the searchQueryURL
-          var searchAPIId = "770e1cdd";
-          var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
-          var searchQueryURL =
-            "https://api.edamam.com/search?q=" +
-            foods +
-            "&app_id=" +
-            searchAPIId +
-            "&app_key=" +
-            searchAPIkey;
-          var searchAPIId = "770e1cdd";
-          var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
+    //calling the search query
 
-          searchQueryURL =
-            "https://api.edamam.com/search?q=" +
-            foods +
-            "&app_id=" +
-            searchAPIId +
-            "&app_key=" +
-            searchAPIkey;
-          console.log(searchQueryURL);
+    $.ajax({
+      url: searchQueryURL,
+      method: "get",
+    }).then(function (response) {
+      console.log(response);
+      localStorage.setItem("query", JSON.stringify(response));
 
-          //calling the search query
-
-          $.ajax({
-            url: searchQueryURL,
-            method: "get",
-          }).then(function (response) {
-            console.log(response);
-
-            var recimg = response.hits[1].recipe.image;
-
-            console.log(recimg);
-
-            console.log(searchQueryURL);
-          });
-
-          $("recipes.html#card-1");
-          $(this).find("img").attr("src", recimg);
+      //create search button
+      $("#searchBtn")
+        .html("Search for Recipes containing " + foods)
+        .on("click", function () {
+          window.location.replace("recipes.html");
         });
-      });
+    });
   });
+
+  var response = localStorage.getItem(JSON.parse("response"));
+  console.log(response);
+
+  function populateCards() {
+    for (i = 0; i < 8; i++) {
+      var recTitle = response.hits[i].recipe.label;
+      var recImg = response.hits[i].recipe.image;
+      var recDiet = response.hits[i].recipe.dietLabels;
+      var recHealth = response.hits[i].recipe.healthLabels;
+      var recURL = response.hits[i].recipe.url;
+
+      console.log(recTitle);
+      console.log(recImg);
+      console.log(recDiet);
+      console.log(recHealth);
+      console.log(recURL);
+
+      console.log(searchQueryURL);
+    }
+    populateCards();
+
+    //adding the recipe preview data to cards
+
+    // <h2 id="recipeHead">Your Recipes containing</h2>
+    // </div>
+    // <div class="card-deck">
+    //   <div class="card" id="card-1">
+    //     <img class="card-img-top recipe-image" src="" alt="" />
+    //     <div class="card-body">
+    //       <h4 class="card-title">title</h4>
+    //       <p class="card-text recipe-diet">Diet Info</p>
+    //       <p class="card-text recipe-health">Health Info</p>
+    //     </div>
+
+    $("#card-" + [i]).html(cardCondition);
+    $(this, "#recipe-imag").html("src", recImg);
+    $(this, ".card-title").html(recTitle);
+    $(this, ".recipe-diet").html(recDiet);
+    $(this, ".recipe-health").html(recHealth);
+    $(this, "#recURL").html("href", recURL);
+  }
+  //create search button
 });
+//});
