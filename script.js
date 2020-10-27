@@ -56,7 +56,7 @@ $.ajax({
     console.log(response);
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
     console.log('DOCUMENT READY!!!');
     var APIId = "4ddc0164";
     var APIId2 = "da37f968";
@@ -65,45 +65,51 @@ $(document).ready(function(){
     var dbURL = "https://api.edamam.com/api/food-database/v2/parser?";
     var nutURL = "https://api.edamam.com/api/nutrition-data?";
     var queryURL = dbURL + "ingr=red+apple&app_id=" + APIId + "&app_key=" + APIKey;
-    var query2URL = nutURL + "ingr=one%20large%20apple&app_id=" + APIId2 +"&app_key=" + APIKey2;
-    
+    var query2URL = nutURL + "ingr=one%20large%20apple&app_id=" + APIId2 + "&app_key=" + APIKey2;
+    var foodCount = [0];
     function getFoodData(foods) {
         $("#food-results").empty();
         var getUrl = `${dbURL}ingr=${foods}&app_id=${APIId}&app_key=${APIKey}`;
         $.ajax({
             url: getUrl,
             method: "GET"
-        }).then(function(response){
+        }).then(function (response) {
             console.log('RESPONSE', response);
             $('#food-results').append('<h2>Food Results</h2>');
-            
-            response.parsed.forEach(function(foodItem) {
+
+            response.parsed.forEach(function (foodItem) {
                 $('#food-results').append('<h4>Food</h4>');
                 $('#food-results').append(`<p>${foodItem.food.label}</p>`);
                 $('#food-results').append('<h4>Category</h4>');
                 $('#food-results').append(`<p>${foodItem.food.category}</p>`);
-                if (foodItem.food.image == null){
+                if (foodItem.food.image == null) {
 
                 }
                 else {
                     $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
                 }
-                
+
             })
-            
+
 
         });
     };
-    
-    $("#submit").on("click", function(event){
-        event.preventDefault();
-        var foods = $("#food-input").val();
-        console.log(foods);
 
-        getFoodData(foods);
-    }); 
-    $("#addIng").on("click",function(){
-        $("<textarea>").addClass("form-control row").attr("type","text").insertAfter("#food-input");
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
+        for (var i = 0; i < foodCount.length; i++) {
+
+
+            var foods = $("#food-input" + foodCount[i]).val();
+            console.log(foods);
+
+            getFoodData(foods);
+        }
+    });
+    $("#addIng").on("click", function () {
+        var texts = $("<textarea>").addClass("form-control row").attr("type", "text").insertAfter("#food-input"+(foodCount.length - 1));
+        texts.attr("id", "food-input" + foodCount.length);
+        foodCount.push(foodCount.length);
     })
 
     // $.ajax({
