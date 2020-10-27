@@ -89,9 +89,10 @@ $(document).ready(function(){
         });
     };
     
-    $("#recipe-form").submit(function(event){
+    $("#submit").on("click", function(event){
         event.preventDefault();
         var foods = $("#food-input").val();
+        console.log(foods);
 
         getFoodData(foods);
     }); 
