@@ -119,6 +119,9 @@ $(document).ready(function () {
         foodCount.push(foodCount.length);
     })
 
+    $("#clear").on("click",function(){
+        $("#food-results").empty();
+    })
     // $.ajax({
     //     url: query2URL,
     //     method: "GET"
