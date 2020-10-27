@@ -78,15 +78,14 @@ $(document).ready(function () {
             $('#food-results').append('<h2>Food Results</h2>');
 
             response.parsed.forEach(function (foodItem) {
+                if (foodItem.food.image != null) {
+                    $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
+                }
                 $('#food-results').append('<h4>Food</h4>');
                 $('#food-results').append(`<p>${foodItem.food.label}</p>`);
                 $('#food-results').append('<h4>Category</h4>');
                 $('#food-results').append(`<p>${foodItem.food.category}</p>`);
-                if (foodItem.food.image != null) {
-                    $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
-                }
-
-                console.log(foodItem.food.nutrients);
+                console.log(foodItem);
                 $('#food-results').append('<h4>Carbs</h4>');
                 $('#food-results').append(`<p>${foodItem.food.nutrients.CHOCDF}</p>`);
                 $('#food-results').append('<h4>Energy</h4>');
