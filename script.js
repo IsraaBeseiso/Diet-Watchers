@@ -68,6 +68,7 @@ $(document).ready(function(){
     var query2URL = nutURL + "ingr=one%20large%20apple&app_id=" + APIId2 +"&app_key=" + APIKey2;
     
     function getFoodData(foods) {
+        $("#food-results").empty();
         var getUrl = `${dbURL}ingr=${foods}&app_id=${APIId}&app_key=${APIKey}`;
         $.ajax({
             url: getUrl,
@@ -81,8 +82,13 @@ $(document).ready(function(){
                 $('#food-results').append(`<p>${foodItem.food.label}</p>`);
                 $('#food-results').append('<h4>Category</h4>');
                 $('#food-results').append(`<p>${foodItem.food.category}</p>`);
+                if (foodItem.food.image == null){
 
-                $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
+                }
+                else {
+                    $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
+                }
+                
             })
             
 
@@ -96,6 +102,9 @@ $(document).ready(function(){
 
         getFoodData(foods);
     }); 
+    $("#addIng").on("click",function(){
+        $("<textarea>").addClass("form-control row").attr("type","text").insertAfter("#food-input");
+    })
 
     // $.ajax({
     //     url: query2URL,
