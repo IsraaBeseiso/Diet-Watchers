@@ -7,6 +7,8 @@ $(document).ready(function () {
   var APIKey2 = "1a50ccc453bab3abc3eb37333f1a8b3e";
   var dbURL = "https://api.edamam.com/api/food-database/v2/parser?";
   var nutURL = "https://api.edamam.com/api/nutrition-data?";
+
+  //constructing the queryURL for food database and nutritiondata
   var queryURL =
     dbURL + "ingr=red+apple&app_id=" + APIId + "&app_key=" + APIKey;
   var query2URL =
@@ -16,6 +18,7 @@ $(document).ready(function () {
     "&app_key=" +
     APIKey2;
 
+  //calling and printing the food data
   function getFoodData(foods) {
     var getUrl = `${dbURL}ingr=${foods}&app_id=${APIId}&app_key=${APIKey}`;
     $.ajax({
@@ -36,10 +39,11 @@ $(document).ready(function () {
       });
     });
   }
-
+  //submit button, setting value of foods
   $("#recipe-form").submit(function (event) {
     event.preventDefault();
     var foods = $("#food-input").val();
+    localStorage.setItem("food-choice", JSON.stringify(foods));
     getFoodData(foods);
 
     //edamam search api call
@@ -73,15 +77,16 @@ $(document).ready(function () {
       method: "get",
     }).then(function (response) {
       console.log(response);
+      console.log(foods);
 
-      //setting up local storage efore the page change
+      //setting up local storage before the page change
       localStorage.setItem("query", JSON.stringify(response));
-      localStorage.setItem("food-choice", JSON.stringify(foods));
 
       //create search button
       $("#searchBtn")
         .html("Search for Recipes containing " + foods)
         .on("click", function () {
+          console.log("line 85");
           populateCards(response);
         });
     });
@@ -90,7 +95,6 @@ $(document).ready(function () {
   var response = JSON.parse(localStorage.getItem("query"));
   var foodChoice = JSON.parse(localStorage.getItem("food-choice"));
   console.log(response);
-  console.log(foodChoice);
 
   //WE ARE GOOD TO HERE
 
