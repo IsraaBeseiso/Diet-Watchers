@@ -82,8 +82,7 @@ $(document).ready(function () {
       $("#searchBtn")
         .html("Search for Recipes containing " + foods)
         .on("click", function () {
-          window.location.replace("recipes.html");
-          populateCards();
+          populateCards(response);
         });
     });
   });
@@ -95,9 +94,9 @@ $(document).ready(function () {
 
   //WE ARE GOOD TO HERE
 
-  function populateCards() {
+  function populateCards(response) {
     $("#recipeHead").html("Your Recipes containing " + foodChoice);
-
+    console.log("hello");
     for (i = 0; i < 8; i++) {
       var recTitle = response.hits[i].recipe.label;
       var recImg = response.hits[i].recipe.image;
@@ -111,9 +110,7 @@ $(document).ready(function () {
       console.log(recHealth);
       console.log(recURL);
 
-      console.log(searchQueryURL);
-
-      $("#card-" + [i]).html(cardCondition);
+      $("#card-" + [i]).html;
       $(this, "#recipe-imag").html("src", recImg);
       $(this, ".card-title").html(recTitle);
       $(this, ".recipe-diet").html(recDiet);
