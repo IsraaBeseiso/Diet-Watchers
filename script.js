@@ -101,7 +101,7 @@ $(document).ready(function () {
     console.log("hello");
     $("#recipeHead").html("Your Recipes containing " + foodChoice);
     console.log("hello");
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < 6; i++) {
       var recTitle = response.hits[i].recipe.label;
       var recImg = response.hits[i].recipe.image;
       var recDiet = response.hits[i].recipe.dietLabels;
@@ -109,18 +109,16 @@ $(document).ready(function () {
       var recURL = response.hits[i].recipe.url;
       console.log(recTitle);
       console.log(recImg);
-      console.log(recDiet);
-      console.log(recHealth);
+      //console.log(recDiet);
+      //console.log(recHealth);
       console.log(recURL);
 
-      $("#card").html;
-      $("#recipeImg").html("src", "recImg");
-      $("#recipeTitle").html(recTitle);
+      $("#card" + [i]).html;
+      $(this, ".recipeImg").html("src", "recImg");
+      $(this, ".recipeTitle").html(recTitle);
       //$(this, ".recipe-diet").html(recDiet);
       //$(this, ".recipe-health").html(recHealth);
-      $("#recipeURL").html("recURL");
-
-      $("#card").append("#card");
+      $(this, ".recipeURL").html("recURL");
     }
   }
 });
