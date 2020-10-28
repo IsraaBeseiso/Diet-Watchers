@@ -49,6 +49,8 @@ $(document).ready(function () {
     //edamam search api call
 
     //constructing the searchQueryURL
+    $("#searchBtn").html("Search for Recipes containing " + foods);
+
     var searchAPIId = "770e1cdd";
     var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
     var searchQueryURL =
@@ -81,24 +83,22 @@ $(document).ready(function () {
 
       //setting up local storage before the page change
       localStorage.setItem("query", JSON.stringify(response));
-
-      //create search button
-      $("#searchBtn")
-        .html("Search for Recipes containing " + foods)
-        .on("click", function () {
-          console.log("line 85");
-          populateCards(response);
-        });
     });
   });
 
   var response = JSON.parse(localStorage.getItem("query"));
   var foodChoice = JSON.parse(localStorage.getItem("food-choice"));
-  console.log(response);
 
-  //WE ARE GOOD TO HERE
+  $("#searchBtn").on("click", function () {
+    console.log(response);
+  });
+
+  if (window.location.pathname == "/project/recipes.html") {
+    populateCards(response);
+  }
 
   function populateCards(response) {
+    console.log("hello");
     $("#recipeHead").html("Your Recipes containing " + foodChoice);
     console.log("hello");
     for (i = 0; i < 8; i++) {
@@ -107,19 +107,20 @@ $(document).ready(function () {
       var recDiet = response.hits[i].recipe.dietLabels;
       var recHealth = response.hits[i].recipe.healthLabels;
       var recURL = response.hits[i].recipe.url;
-
       console.log(recTitle);
       console.log(recImg);
       console.log(recDiet);
       console.log(recHealth);
       console.log(recURL);
 
-      $("#card-" + [i]).html;
-      $(this, "#recipe-imag").html("src", recImg);
-      $(this, ".card-title").html(recTitle);
-      $(this, ".recipe-diet").html(recDiet);
-      $(this, ".recipe-health").html(recHealth);
-      $(this, "#recURL").html("href", recURL);
+      $("#card").html;
+      $("#recipeImg").html("src", "recImg");
+      $("#recipeTitle").html(recTitle);
+      //$(this, ".recipe-diet").html(recDiet);
+      //$(this, ".recipe-health").html(recHealth);
+      $("#recipeURL").html("recURL");
+
+      $("#card").append("#card");
     }
   }
 });
