@@ -40,7 +40,6 @@ $(document).ready(function () {
   $("#recipe-form").submit(function (event) {
     event.preventDefault();
     var foods = $("#food-input").val();
-    //localStorage.setItem();
     getFoodData(foods);
 
     //edamam search api call
@@ -74,21 +73,31 @@ $(document).ready(function () {
       method: "get",
     }).then(function (response) {
       console.log(response);
+
+      //setting up local storage efore the page change
       localStorage.setItem("query", JSON.stringify(response));
+      localStorage.setItem("food-choice", JSON.stringify(foods));
 
       //create search button
       $("#searchBtn")
         .html("Search for Recipes containing " + foods)
         .on("click", function () {
           window.location.replace("recipes.html");
+          populateCards();
         });
     });
   });
 
-  var response = localStorage.getItem(JSON.parse("response"));
+  var response = JSON.parse(localStorage.getItem("query"));
+  var foodChoice = JSON.parse(localStorage.getItem("food-choice"));
   console.log(response);
+  console.log(foodChoice);
+
+  //WE ARE GOOD TO HERE
 
   function populateCards() {
+    $("#recipeHead").html("Your Recipes containing " + foodChoice);
+
     for (i = 0; i < 8; i++) {
       var recTitle = response.hits[i].recipe.label;
       var recImg = response.hits[i].recipe.image;
@@ -103,29 +112,13 @@ $(document).ready(function () {
       console.log(recURL);
 
       console.log(searchQueryURL);
+
+      $("#card-" + [i]).html(cardCondition);
+      $(this, "#recipe-imag").html("src", recImg);
+      $(this, ".card-title").html(recTitle);
+      $(this, ".recipe-diet").html(recDiet);
+      $(this, ".recipe-health").html(recHealth);
+      $(this, "#recURL").html("href", recURL);
     }
-    populateCards();
-
-    //adding the recipe preview data to cards
-
-    // <h2 id="recipeHead">Your Recipes containing</h2>
-    // </div>
-    // <div class="card-deck">
-    //   <div class="card" id="card-1">
-    //     <img class="card-img-top recipe-image" src="" alt="" />
-    //     <div class="card-body">
-    //       <h4 class="card-title">title</h4>
-    //       <p class="card-text recipe-diet">Diet Info</p>
-    //       <p class="card-text recipe-health">Health Info</p>
-    //     </div>
-
-    $("#card-" + [i]).html(cardCondition);
-    $(this, "#recipe-imag").html("src", recImg);
-    $(this, ".card-title").html(recTitle);
-    $(this, ".recipe-diet").html(recDiet);
-    $(this, ".recipe-health").html(recHealth);
-    $(this, "#recURL").html("href", recURL);
   }
-  //create search button
 });
-//});
