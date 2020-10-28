@@ -46,7 +46,7 @@ $(document).ready(function () {
     localStorage.setItem("food-choice", JSON.stringify(foods));
     getFoodData(foods);
 
-    //edamam search api call
+    //EDAMAM SEARCH API CALL
 
     //constructing the searchQueryURL
     $("#searchBtn").html("Search for Recipes containing " + foods);
@@ -100,14 +100,6 @@ $(document).ready(function () {
   function populateCards(response) {
     $("#recipeHead").html("Your Recipes Containing: " + foodChoice);
     console.log("hello");
-    for (i = 0; i < 10; i++) {
-      var recTitle = response.hits[i].recipe.label;
-      var recImg = response.hits[i].recipe.image;
-      var recURL = response.hits[i].recipe.url;
-      console.log(recTitle);
-      console.log(recImg);
-      console.log(recURL);
-    }
 
     var cardDeck = [
       "#card-0",
@@ -121,17 +113,22 @@ $(document).ready(function () {
       "#card-8",
       "#card-9",
     ];
-    console.log(cardDeck);
 
-    cardDeck.forEach(myfunction);
-    function myfunction(item, index) {
-      console.log(index, item);
-      $("#recipeTitle-" + index).text(recTitle);
-      console.log(index);
-      $("#recipeURL-" + index)
+    for (i = 0; i < 10; i++) {
+      var recTitle = response.hits[i].recipe.label;
+      var recImg = response.hits[i].recipe.image;
+      var recURL = response.hits[i].recipe.url;
+      console.log(recTitle);
+      console.log(recImg);
+      console.log(recURL);
+      console.log(cardDeck);
+
+      $(cardDeck[i]);
+      $("#recipeTitle-" + [i]).text(recTitle);
+      $("#recipeURL-" + [i])
         .html(recURL)
         .attr("href", recURL);
-      $("#recipeImg-" + index).attr("src", recImg);
+      $("#recipeImg-" + [i]).attr("src", recImg);
     }
   }
 });
