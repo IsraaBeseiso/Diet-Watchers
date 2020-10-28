@@ -11,13 +11,14 @@ $(document).ready(function(){
     
     function getFoodData(foods) {
         var getUrl = `${dbURL}ingr=${foods}&app_id=${APIId}&app_key=${APIKey}`;
+    
         $.ajax({
             url: getUrl,
             method: "GET"
         }).then(function(response){
             console.log('RESPONSE', response);
             $('#food-results').append('<h2>Food Results</h2>');
-            
+
             response.parsed.forEach(function(foodItem) {
                 $('#food-results').append('<h4>Food</h4>');
                 $('#food-results').append(`<p>${foodItem.food.label}</p>`);
@@ -25,17 +26,21 @@ $(document).ready(function(){
                 $('#food-results').append(`<p>${foodItem.food.category}</p>`);
 
                 $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
+                $('#food-results').append(`<h4>${foodItem.food.nutritionalValue}</h4>`);
             })
-            
 
         });
     };
+
+   
+
     
     $("#recipe-form").submit(function(event){
         event.preventDefault();
         var foods = $("#food-input").val();
-
+        console.log(foods);
         getFoodData(foods);
+    
     }); 
 
     // $.ajax({
