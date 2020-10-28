@@ -98,22 +98,40 @@ $(document).ready(function () {
   }
 
   function populateCards(response) {
-    $("#recipeHead").html("Your Recipes containing " + foodChoice);
+    $("#recipeHead").html("Your Recipes Containing: " + foodChoice);
     console.log("hello");
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 10; i++) {
       var recTitle = response.hits[i].recipe.label;
       var recImg = response.hits[i].recipe.image;
-      //var recDiet = response.hits[i].recipe.dietLabels;
-      // var recHealth = response.hits[i].recipe.healthLabels;
       var recURL = response.hits[i].recipe.url;
       console.log(recTitle);
       console.log(recImg);
       console.log(recURL);
+    }
 
-      $("#card" + [i]).html;
-      $(this, ".recipeImg").html("src", "recImg");
-      $(this, ".recipeTitle").html("recTitle");
-      $(this, ".recipeURL").html("recURL");
+    var cardDeck = [
+      "#card-0",
+      "#card-1",
+      "#card-2",
+      "#card-3",
+      "#card-4",
+      "#card-5",
+      "#card-6",
+      "#card-7",
+      "#card-8",
+      "#card-9",
+    ];
+    console.log(cardDeck);
+
+    cardDeck.forEach(myfunction);
+    function myfunction(item, index) {
+      console.log(index, item);
+      $("#recipeTitle-" + index).text(recTitle);
+      console.log(index);
+      $("#recipeURL-" + index)
+        .html(recURL)
+        .attr("href", recURL);
+      $("#recipeImg-" + index).attr("src", recImg);
     }
   }
 });
