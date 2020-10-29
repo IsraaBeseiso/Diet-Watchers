@@ -29,32 +29,35 @@ var object = {
         "1 cup chicken broth, homemade or low-sodium canned"
     ]
 }
-$.ajax({
-    url: query3URL,
-    method: "POST",
-    contentType: "application/json",
-    dataType: "json",
-    data: JSON.stringify(object),
-    beforeSend: function (x) {
-        if (x && x.overrideMimeType) {
-            x.overrideMimeType("application/j-son;charset=UTF-8");
-        }
-    },
-}).then(function (response) {
-    console.log(response);
-});
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response);
-});
-$.ajax({
-    url: query2URL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response);
-});
+function queryURLCalls() {
+    $.ajax({
+        url: query3URL,
+        method: "POST",
+        contentType: "application/json",
+        dataType: "json",
+        data: JSON.stringify(object),
+        beforeSend: function (x) {
+            if (x && x.overrideMimeType) {
+                x.overrideMimeType("application/j-son;charset=UTF-8");
+            }
+        },
+    }).then(function (response) {
+        console.log(response);
+    });
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+    });
+    $.ajax({
+        url: query2URL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+    });
+
+}
 
 $(document).ready(function () {
     console.log('DOCUMENT READY!!!');
@@ -114,12 +117,12 @@ $(document).ready(function () {
         }
     });
     $("#addIng").on("click", function () {
-        var texts = $("<input>").addClass("form-control row").attr("type", "text").insertAfter("#food-input"+(foodCount.length - 1));
+        var texts = $("<input>").addClass("form-control row").attr("type", "text").insertAfter("#food-input" + (foodCount.length - 1));
         texts.attr("id", "food-input" + foodCount.length);
         foodCount.push(foodCount.length);
     })
 
-    $("#clear").on("click",function(){
+    $("#clear").on("click", function () {
         $("#food-results").empty();
     });
     // $.ajax({
