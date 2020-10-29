@@ -114,14 +114,14 @@ $(document).ready(function () {
         }
     });
     $("#addIng").on("click", function () {
-        var texts = $("<textarea>").addClass("form-control row").attr("type", "text").insertAfter("#food-input"+(foodCount.length - 1));
+        var texts = $("<input>").addClass("form-control row").attr("type", "text").insertAfter("#food-input"+(foodCount.length - 1));
         texts.attr("id", "food-input" + foodCount.length);
         foodCount.push(foodCount.length);
     })
 
     $("#clear").on("click",function(){
         $("#food-results").empty();
-    })
+    });
     // $.ajax({
     //     url: query2URL,
     //     method: "GET"
