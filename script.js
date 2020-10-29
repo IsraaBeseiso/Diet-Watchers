@@ -1,6 +1,14 @@
 $(document).ready(function () {
   console.log("DOCUMENT READY!!!");
 
+  $.ajax({
+    url:
+      "http://en.wikipedia.org/w/api.php?action=query&prop=extracts&format=json&exintro=&titles=Stack%20Overflow",
+    method: "get",
+  }).then(function (response) {
+    console.log(response);
+  });
+
   var APIId = "4ddc0164";
   var APIId2 = "da37f968";
   var APIKey = "b272fce0ae48e4cee50f2586bde11a3c";
@@ -49,14 +57,14 @@ $(document).ready(function () {
     //EDAMAM SEARCH API CALL
 
     //constructing the searchQueryURL
-    $("#searchBtn").html("Search for Recipes containing " + foods);
+    $("#searchBtn").html("Search for Recipes containing " + foods + "Chicken");
 
     var searchAPIId = "770e1cdd";
     var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
     var searchQueryURL =
       "https://api.edamam.com/search?q=" +
       foods +
-      "&app_id=" +
+      "&?q=chicken&app_id=" +
       searchAPIId +
       "&app_key=" +
       searchAPIkey;
