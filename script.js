@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 $(document).ready(function () {
   console.log("DOCUMENT READY!!!");
 
@@ -147,39 +148,33 @@ $.ajax({
 
 
 
+=======
+$(document).ready(function () {
+>>>>>>> 69e4901db80e3aff74e83a4c53985f2b0a68bdd6
     console.log('DOCUMENT READY!!!');
     var APIId = "4ddc0164";
-    var APIId2 = "da37f968";
     var APIKey = "b272fce0ae48e4cee50f2586bde11a3c";
-    var APIKey2 = "1a50ccc453bab3abc3eb37333f1a8b3e";
     var dbURL = "https://api.edamam.com/api/food-database/v2/parser?";
-    var nutURL = "https://api.edamam.com/api/nutrition-data?";
-    var queryURL = dbURL + "ingr=red+apple&app_id=" + APIId + "&app_key=" + APIKey;
-
-    var query2URL = nutURL + "ingr=one%20large%20apple&app_id=" + APIId2 + "&app_key=" + APIKey2;
-    var foodCount = [0];
-    function getFoodData(foods) {
+    var foods;
+    var foodResponse;
+    
+    function getFoodData(item) {
         $("#food-results").empty();
-
-        var getUrl = `${dbURL}ingr=${foods}&app_id=${APIId}&app_key=${APIKey}`;
+        var getUrl = `${dbURL}ingr=${item}&app_id=${APIId}&app_key=${APIKey}`;
         $.ajax({
             url: getUrl,
             method: "GET"
-
         }).then(function (response) {
             console.log('RESPONSE', response);
             $('#food-results').append('<h2>Food Results</h2>');
-
             response.parsed.forEach(function (foodItem) {
                 if (foodItem.food.image != null) {
                     $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
                 }
-
                 $('#food-results').append('<h4>Food</h4>');
                 $('#food-results').append(`<p>${foodItem.food.label}</p>`);
                 $('#food-results').append('<h4>Category</h4>');
                 $('#food-results').append(`<p>${foodItem.food.category}</p>`);
-
                 console.log(foodItem);
                 $('#food-results').append('<h4>Carbs</h4>');
                 $('#food-results').append(`<p>${foodItem.food.nutrients.CHOCDF}</p>`);
@@ -192,31 +187,27 @@ $.ajax({
                 $('#food-results').append('<h4>Protein</h4>');
                 $('#food-results').append(`<p>${foodItem.food.nutrients.PROCNT}</p>`);
             });
-
-
         });
     };
 
     $("#submit").on("click", function (event) {
         event.preventDefault();
-        for (var i = 0; i < foodCount.length; i++) {
 
+        foods = $("#food-input0").val().trim();
+        console.log(foods);
+        getFoodData(foods);
 
-            var foods = $("#food-input" + foodCount[i]).val();
-            console.log(foods);
-
+<<<<<<< HEAD
             getFoodData(foods);
         }
 >>>>>>> f1ece4358a0b5355660a6113665ad3d0d5ce8b41
+=======
+>>>>>>> 69e4901db80e3aff74e83a4c53985f2b0a68bdd6
     });
-    $("#addIng").on("click", function () {
-        var texts = $("<textarea>").addClass("form-control row").attr("type", "text").insertAfter("#food-input"+(foodCount.length - 1));
-        texts.attr("id", "food-input" + foodCount.length);
-        foodCount.push(foodCount.length);
-    })
 
-    $("#clear").on("click",function(){
+    $("#clear").on("click", function () {
         $("#food-results").empty();
+<<<<<<< HEAD
     })
 
 <<<<<<< HEAD
@@ -264,21 +255,67 @@ $.ajax({
   }
 });
 =======
+=======
+    });
+>>>>>>> 69e4901db80e3aff74e83a4c53985f2b0a68bdd6
 
-                $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
-            })
-            
 
+    console.log(window);
+
+    $("#searchBtn").html("Search for Recipes containing " + foods);
+    var searchAPIId = "770e1cdd";
+    var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
+    var searchQueryURL;
+    var searchAPIId = "770e1cdd";
+    var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
+    console.log(searchQueryURL);
+
+    $("#searchBtn").on("click", function () {
+        foods = $("#food-input0").val().trim();
+        searchQueryURL =
+            "https://api.edamam.com/search?q=" +
+            foods +
+            "&app_id=" +
+            searchAPIId +
+            "&app_key=" +
+            searchAPIkey;
+        $.ajax({
+            url: searchQueryURL,
+            method: "GET",
+        }).then(function (response) {
+            console.log("search response: ", response);
+            console.log("foods: ", foods);
+            localStorage.setItem("food-choice", JSON.stringify(foods));
+            //setting up local storage before the page change
+            localStorage.setItem("query", JSON.stringify(response));
+            console.log(searchQueryURL);
+            console.log(foodResponse);
+            window.location.href= "recipes.html";
         });
-    };
-    
-    $("#recipe-form").submit(function(event){
-        event.preventDefault();
-        var foods = $("#food-input").val();
-
-        getFoodData(foods);
-    }); 
+    });
+});
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
 })
 >>>>>>> f1ece4358a0b5355660a6113665ad3d0d5ce8b41
+=======
+>>>>>>> 69e4901db80e3aff74e83a4c53985f2b0a68bdd6
