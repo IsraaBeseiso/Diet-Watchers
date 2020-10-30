@@ -10,6 +10,16 @@ $(document).ready(function () {
     var foods;
     var foodResponse;
 
+    // Random food fact API call
+    var triviaQueryURL = "https://api.spoonacular.com/food/trivia/random?apiKey=d7e30d059506417c82aa5dabdbdadf43";
+    $.ajax({
+        url: triviaQueryURL,
+        method: "get",
+    }).then(function (response) {
+        console.log("RESPONSE", response);
+        $("#foodFact").text("Random Food Fact: " + response.text)
+    });
+
     // Function to get our nutritional info and display it
     function getFoodData(item) {
         $("#food-results-0").empty();
