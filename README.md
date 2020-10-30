@@ -1,7 +1,7 @@
 # Diet Watchers
 
-github: https://github.com/IsraaBeseiso/project
-github pages: https://israabeseiso.github.io/project/
+github: https://github.com/IsraaBeseiso/Diet-Watchers
+github pages: https://israabeseiso.github.io/Diet-Watchers/
 
 
 * Diet Watchers was designed to be used by anyone who wants to be more health conscious when cooking. You can use the website to find nutrition facts for numerous food items and also search for tasty recipes that include the ingredients you search for. We've also included some random food facts!
