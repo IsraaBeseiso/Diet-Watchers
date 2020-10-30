@@ -40,7 +40,6 @@ $(document).ready(function () {
 
     $("#submit").on("click", function (event) {
         event.preventDefault();
-
         foods = $("#food-input0").val().trim();
         console.log(foods);
         getFoodData(foods);
@@ -54,7 +53,12 @@ $(document).ready(function () {
 
     console.log(window);
 
-    $("#searchBtn").html("Search for Recipes containing " + foods);
+    setInterval(function(){
+        foods = $("#food-input0").val().trim();
+        if (foods != undefined){
+            $("#searchBtn").text("Search for Recipes containing " + foods);
+        }
+    }, 100);
     var searchAPIId = "770e1cdd";
     var searchAPIkey = "2543f5d8a60632314acdfd6abc82fcb9";
     var searchQueryURL;
