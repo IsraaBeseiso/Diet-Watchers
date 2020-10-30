@@ -26,9 +26,9 @@ $(document).ready(function () {
         $("#food-results").empty();
         $("#food-results-1").empty();
         $("#food-results-2").empty();
-        var getUrl = `${dbURL}ingr=${item}&app_id=${APIId}&app_key=${APIKey}`;
-
+        
         // Nutritional info API call
+        var getUrl = `${dbURL}ingr=${item}&app_id=${APIId}&app_key=${APIKey}`;
         $.ajax({
             url: getUrl,
             method: "GET"
@@ -36,9 +36,11 @@ $(document).ready(function () {
             console.log('RESPONSE', response);
             $('#food-results-0').append('<h2>Food Results</h2>');
             response.parsed.forEach(function (foodItem) {
+                
                 if (foodItem.food.image != null) {
                     $('#food-results').append(`<img src=${foodItem.food.image} alt=${foodItem.food.label}/>`);
                 }
+
                 $('#food-results-1').append('<h4>Food</h4>');
                 $('#food-results-1').append(`<p>${foodItem.food.label}</p>`);
 
@@ -70,8 +72,10 @@ $(document).ready(function () {
     // Event listener for "Get Nutritional Info" button
     $("#submit").on("click", function (event) {
         event.preventDefault();
+
         foods = $("#food-input0").val().trim();
         console.log(foods);
+
         getFoodData(foods);
 
     });
@@ -85,6 +89,7 @@ $(document).ready(function () {
     // Function to update "Search for Recipes Containing ___" with what is typed
     setInterval(function () {
         foods = $("#food-input0").val().trim();
+        
         if (foods != undefined) {
             $("#searchBtn").text("Search for Recipes Containing " + foods);
         }
