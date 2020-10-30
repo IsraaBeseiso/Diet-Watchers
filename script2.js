@@ -1,6 +1,8 @@
+// Get recipe search API results out of local storage
 var foodResponse = JSON.parse(localStorage.getItem("query"));
 var foodChoice = JSON.parse(localStorage.getItem("food-choice"));
 
+// If nothing was search display nothing is searched div instead
 if (foodChoice == "" || foodChoice == null) {
     $("#nothing").css("display", "block");
     $("#search").css("display", "none");
@@ -9,7 +11,7 @@ else{
     populateCards(foodResponse);
 }
 
-
+// Function to fill cards with recipe seach API results
 function populateCards(foodThing) {
     $("#recipeHead").html("Your Recipes Containing: " + foodChoice);
     console.log("hello");
