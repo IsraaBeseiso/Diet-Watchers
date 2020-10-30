@@ -15,6 +15,8 @@
 </head>
 
 <body>
+
+  <!-- Navbar div -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
       <a class="navbar-brand font-weight-bold" href="index.html">Diet Watchers</a>
@@ -31,26 +33,33 @@
       </div>
     </nav>
   </header>
+
+  <!-- Ingredient search and nutrition info div -->
   <div class="container pt-4 mt-4" id='food-input'>
+
+    <!-- Ingredient search div -->
     <div class="row">
       <div class="col-md p-0" id="inputs">
-
         <h2 style>Enter Your Ingredient(s)</h2>
 
+        <!-- Ingredient input -->
         <input class="form-control col-md-6" type="text" id="food-input0">
+
+        <!-- Buttons div -->
         <div class="row">
           <div class="col-md-6">
             <button type="button" class="btn btn-info border border-dark" id="submit">Get Nutritional Info</button>
             <button type="button" class="btn btn-info border border-dark" id="clear">Clear</button>
             <button type='button' id='searchBtn' class='btn btn-info search border border-dark'></button>
           </div>
-
         </div>
+
       </div>
     </div>
+
+    <!-- Nutrition info div -->
     <div class="container pt-4">
       <div class="row" id="food-results-0">
-
       </div>
       <div class="row font-weight-bold">
         <div class="col-4" id="food-results">
@@ -63,26 +72,11 @@
 
         </div>
       </div>
-
-
-
     </div>
 
-    <!--Search button-->
-
-
-
-
-
-  </div>
   </div>
 
-
-
-
-
-  <!--optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- Links to jQuery, and our javascript -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -94,6 +88,7 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
   <script src="script.js"></script>
+
 </body>
 
 </html>
