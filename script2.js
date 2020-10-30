@@ -1,7 +1,14 @@
 var foodResponse = JSON.parse(localStorage.getItem("query"));
 var foodChoice = JSON.parse(localStorage.getItem("food-choice"));
 
-populateCards(foodResponse);
+if (foodChoice == "" || foodChoice == null) {
+    $("#nothing").css("display", "block");
+    $("#search").css("display", "none");
+}
+else{
+    populateCards(foodResponse);
+}
+
 
 function populateCards(foodThing) {
     $("#recipeHead").html("Your Recipes Containing: " + foodChoice);

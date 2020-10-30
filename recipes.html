@@ -1,149 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Recipe Search Results</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <header>
-      <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <a class="navbar-brand" href="#">Diet Watchers</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Home <span class="sr-only">(current)</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Cookbook</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+<head>
+  <title>Recipe Search Results</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <div>
-      <h2 id="recipeHead" class="m-3">Your Recipes Containing:</h2>
-    </div>
-    <div
-      class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-5"
-    >
-      <div class="card" id="card-0" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-0" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-0">title</h4>
-          <a href="" id="recipeURL-0" target="_blank">Recipe URL</a>
-        </div>
-      </div>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+</head>
 
-      <div class="card" id="card-1" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-1" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-1">title</h4>
-          <a href="" id="recipeURL-1" target="_blank">Recipe URL</a>
-        </div>
+<body>
+  <header>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+      <a class="navbar-brand font-weight-bold" href="index.html">Diet Watchers</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="navbar-brand" href="recipes.html">Recipe Search</a>
+          </li>
+        </ul>
       </div>
+    </nav>
+  </header>
 
-      <div class="card" id="card-2" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-2" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-2">title</h4>
-          <a href="" id="recipeURL-2" target="_blank">Recipe URL</a>
-        </div>
-      </div>
-
-      <div class="card" id="card-3" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-3" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-3">title</h4>
-          <a href="" id="recipeURL-3" target="_blank">Recipe URL</a>
-        </div>
-      </div>
-
-      <div class="card" id="card-4" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-4" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-4">title</h4>
-          <a href="" id="recipeURL-4" target="_blank">Recipe URL</a>
-        </div>
-      </div>
-
-      <div class="card" id="card-5" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-5" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-5">title</h4>
-          <a href="" id="recipeURL-5" target="_blank">Recipe URL</a>
-        </div>
-      </div>
-
-      <div class="card" id="card-6" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-6" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-6">title</h4>
-          <a href="" id="recipeURL-6" target="_blank">Recipe URL</a>
-        </div>
-      </div>
-      <div class="card" id="card-7" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-7" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-7">title</h4>
-          <a href="" id="recipeURL-7" target="_blank">Recipe URL</a>
-        </div>
-      </div>
-      <div class="card" id="card-8" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-8" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-8">title</h4>
-          <a href="" id="recipeURL-8" target="_blank">Recipe URL</a>
-        </div>
-      </div>
-      <div class="card" id="card-9" style="width: 18rem">
-        <img class="card-img-top" id="recipeImg-9" src="" />
-        <div class="card-body">
-          <h4 class="card-title" id="recipeTitle-9">title</h4>
-          <a href="" id="recipeURL-9" target="_blank">Recipe URL</a>
-        </div>
+  <div>
+    <h2 id="recipeHead" class="m-3">Your Recipes Containing:</h2>
+  </div>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-5" id="search">
+    <div class="card" id="card-0" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-0" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-0">title</h4>
+        <a href="" id="recipeURL-0" target="_blank">Recipe URL</a>
       </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="script2.js"></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <div class="card" id="card-1" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-1" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-1">title</h4>
+        <a href="" id="recipeURL-1" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+
+    <div class="card" id="card-2" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-2" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-2">title</h4>
+        <a href="" id="recipeURL-2" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+
+    <div class="card" id="card-3" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-3" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-3">title</h4>
+        <a href="" id="recipeURL-3" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+
+    <div class="card" id="card-4" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-4" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-4">title</h4>
+        <a href="" id="recipeURL-4" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+
+    <div class="card" id="card-5" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-5" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-5">title</h4>
+        <a href="" id="recipeURL-5" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+
+    <div class="card" id="card-6" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-6" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-6">title</h4>
+        <a href="" id="recipeURL-6" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+    <div class="card" id="card-7" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-7" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-7">title</h4>
+        <a href="" id="recipeURL-7" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+    <div class="card" id="card-8" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-8" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-8">title</h4>
+        <a href="" id="recipeURL-8" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+    <div class="card" id="card-9" style="width: 18rem">
+      <img class="card-img-top rounded" id="recipeImg-9" src="" />
+      <div class="card-body">
+        <h4 class="card-title" id="recipeTitle-9">title</h4>
+        <a href="" id="recipeURL-9" target="_blank">Recipe URL</a>
+      </div>
+    </div>
+  </div>
+  <div class="container" id="nothing" style="display: none;">
+    <h1>Please search something</h1>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="script2.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
