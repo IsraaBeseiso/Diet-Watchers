@@ -82,6 +82,9 @@ $(document).ready(function () {
 
     // Event listener for "clear" button
     $("#clear").on("click", function () {
+        $("#food-results-0").empty();
+        $("#food-results-1").empty();
+        $("#food-results-2").empty();
         $("#food-results").empty();
         localStorage.removeItem("food-choice");
     });
